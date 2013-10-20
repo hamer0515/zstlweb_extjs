@@ -9,8 +9,8 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 
 	initComponent : function() {
 		var store = new Ext.data.Store({
-					fields : ['mid', 'sdate', 'tdt', 'ssn', 'tamt', 'pft_chnl',
-							'lfee_chnl', 'je'],
+					fields : ['mid', 'sdate', 'tdt', 'ssn', 'tamt', 'pft',
+							'lfee', 'je', 'mname'],
 
 					pageSize : 50,
 
@@ -40,7 +40,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 							if (!successful) {
 								Ext.MessageBox.show({
 											title : '警告',
-											msg : '渠道分润明细加载失败,请联系管理员',
+											msg : '分润明细加载失败,请联系管理员',
 											buttons : Ext.Msg.YES,
 											icon : Ext.Msg.ERROR
 										});
@@ -50,7 +50,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 							if (jsonData && jsonData === 'forbidden') {
 								Ext.MessageBox.show({
 											title : '警告',
-											msg : '抱歉，没有渠道分润明细数据访问权限',
+											msg : '抱歉，没有分润明细数据访问权限',
 											buttons : Ext.Msg.YES,
 											icon : Ext.Msg.ERROR
 										});
@@ -73,9 +73,15 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 								items : [{
 											xtype : 'textfield',
 											name : 'mid',
+											margin : '0 10 0 0',
 											width : 516,
 											vtype : 'id',
 											fieldLabel : '商户号'
+										}, {
+											xtype : 'textfield',
+											name : 'mname',
+											width : 516,
+											fieldLabel : '商户名称'
 										}]
 							}, {
 								xtype : 'fieldcontainer',
@@ -129,7 +135,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 								displayInfo : true
 							}],
 					columns : [{
-						text : "商户编号",
+						text : "商户号",
 						dataIndex : 'mid',
 						sortable : false,
 						locked : true,
@@ -139,6 +145,12 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 							return '小计：';
 						}
 					}, {
+						text : "交易时间",
+						dataIndex : 'tdt',
+						sortable : false,
+						locked : false,
+						width : 150
+					}, {
 						text : "清算日期",
 						dataIndex : 'sdate',
 						sortable : false,
@@ -146,11 +158,11 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						width : 150,
 						renderer : Ext.util.Format.dateRenderer('Y年m月d日')
 					}, {
-						text : "交易时间",
-						dataIndex : 'tdt',
+						text : "商户名称",
+						dataIndex : 'mname',
 						sortable : false,
 						locked : false,
-						width : 150
+						width : 200
 					}, {
 						text : "交易流水号",
 						dataIndex : 'ssn',
@@ -158,7 +170,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						locked : false,
 						width : 100
 					}, {
-						text : "交易金额",
+						text : "交易金额(元)",
 						dataIndex : 'tamt',
 						sortable : false,
 						locked : true,
@@ -187,8 +199,8 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 									parseInt(value) / 100, '0,0.00');
 						}
 					}, {
-						text : "基本分润",
-						dataIndex : 'pft_chnl',
+						text : "基本分润(元)",
+						dataIndex : 'pft',
 						locked : true,
 						width : 120,
 						sortable : false,
@@ -216,10 +228,10 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 									parseInt(value) / 100, '0,0.00');
 						}
 					}, {
-						text : "品牌服务费承担",
-						dataIndex : 'lfee_chnl',
+						text : "品牌服务费承担(元)",
+						dataIndex : 'lfee',
 						locked : true,
-						width : 120,
+						width : 150,
 						sortable : false,
 						summaryType : function(records) {
 							var i = 0, length = records.length, total = 0, record;
@@ -245,7 +257,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 									parseInt(value) / 100, '0,0.00');
 						}
 					}, {
-						text : "分润净额",
+						text : "分润净额(元)",
 						dataIndex : 'je',
 						locked : true,
 						width : 120,

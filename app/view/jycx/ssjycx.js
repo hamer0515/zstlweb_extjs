@@ -10,7 +10,8 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 			initComponent : function() {
 				var store = new Ext.data.Store({
 							fields : ['mid', 'tid', 'ptdt', 'tcode', 'cno',
-									'ctype', 'tamt'],
+									'ctype', 'tamt', 'mname', 'refnum', 'tsn',
+									'rev_flag'],
 
 							pageSize : 50,
 							remoteSort : true,
@@ -77,12 +78,18 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 													xtype : 'textfield',
 													name : 'mid',
 													width : 516,
+													margin : '0 10 0 0',
 													vtype : 'id',
 													fieldLabel : '商户号'
+												}, {
+													xtype : 'textfield',
+													name : 'tid',
+													width : 516,
+													fieldLabel : '终端号'
 												}]
 									}, {
 										xtype : 'fieldcontainer',
-										fieldLabel : '出款日期',
+										fieldLabel : '交易时间',
 										layout : 'hbox',
 										items : [{
 													xtype : 'datetimefield',
@@ -92,7 +99,30 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 												}, {
 													xtype : 'datetimefield',
 													name : 'ptdt_to',
+													margin : '0 10 0 0',
 													width : 180
+												}, {
+													xtype : 'textfield',
+													name : 'cno',
+													width : 516,
+													fieldLabel : '交易卡号'
+												}]
+									}, {
+										xtype : 'fieldcontainer',
+										layout : 'hbox',
+										items : [{
+													xtype : 'textfield',
+													name : 'refnum',
+													width : 516,
+													margin : '0 10 0 0',
+													vtype : 'id',
+													fieldLabel : '检索参考号'
+												}, {
+													xtype : 'textfield',
+													name : 'tid',
+													width : 516,
+													vtype : 'id',
+													fieldLabel : '终端流水号'
 												}]
 									}, {
 										xtype : 'button',
@@ -111,6 +141,16 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 									}]
 						}, {
 							xtype : 'gridpanel',
+							viewConfig : {
+								getRowClass : function(record) {
+									var color;
+									var jstatus = parseInt(record.data.rev_flag);
+									if (jstatus == 1) {
+										color = 'red';
+									}
+									return color;
+								}
+							},
 							height : 500,
 							collapsible : false,
 							store : this.store,
@@ -121,30 +161,46 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 										displayInfo : true
 									}],
 							columns : [{
+										text : "商户名称",
+										dataIndex : 'mname',
+										sortable : false,
+										flex : 3
+									}, {
 										text : "商户号",
 										dataIndex : 'mid',
 										sortable : false,
 										flex : 3
 									}, {
-										text : "商户终端",
+										text : "终端号",
 										dataIndex : 'tid',
 										sortable : false,
 										flex : 2
 									}, {
+										text : "卡号",
+										dataIndex : 'cno',
+										flex : 4,
+										sortable : false
+									}, {
+										text : "卡类型",
+										dataIndex : 'ctype',
+										width : 100,
+										sortable : false,
+										locked : false,
+										renderer : function(value) {
+											var text = ['借记卡', '信用卡', '信用卡'];
+											return text[parseInt(value) - 1];
+										},
+										width : 80
+									}, {
 										text : "交易时间",
 										dataIndex : 'ptdt',
 										sortable : false,
-										flex : 3
+										flex : 4
 									}, {
 										text : "交易类型",
 										dataIndex : 'tcode',
 										sortable : false,
 										flex : 2
-									}, {
-										text : "交易卡号",
-										dataIndex : 'cno',
-										flex : 4,
-										sortable : false
 									}, {
 										text : "交易金额",
 										dataIndex : 'tamt',
@@ -158,6 +214,21 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 													parseInt(value) / 100,
 													'0,0.00');
 										}
+									}, {
+										text : "检索参考号",
+										dataIndex : 'refnum',
+										sortable : false,
+										flex : 4
+									}, {
+										text : "终端流水号",
+										dataIndex : 'tsn',
+										sortable : false,
+										flex : 2
+									}, {
+										text : "冲正标志",
+										dataIndex : 'rev_flag',
+										flex : 2,
+										sortable : false
 									}]
 						}];
 				this.callParent(arguments);

@@ -9,7 +9,8 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 
 			initComponent : function() {
 				var store = new Ext.data.Store({
-							fields : ['mid', 'fbatch', 'amt', 'cdate', 'status'],
+							fields : ['mid', 'fbatch', 'amt', 'cdate',
+									'status', 'mname'],
 
 							pageSize : 50,
 							remoteSort : true,
@@ -75,9 +76,15 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 										items : [{
 													xtype : 'textfield',
 													name : 'mid',
+													margin : '0 10 0 0',
 													width : 516,
 													vtype : 'id',
 													fieldLabel : '商户号'
+												}, {
+													xtype : 'textfield',
+													name : 'mname',
+													width : 516,
+													fieldLabel : '商户名称'
 												}]
 									}, {
 										xtype : 'fieldcontainer',
@@ -127,6 +134,11 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 										sortable : false,
 										flex : 2
 									}, {
+										text : "商户名称",
+										dataIndex : 'mname',
+										sortable : false,
+										flex : 3
+									}, {
 										text : "出款日期",
 										dataIndex : 'cdate',
 										sortable : false,
@@ -139,7 +151,7 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 										sortable : false,
 										flex : 1
 									}, {
-										text : "出款金额",
+										text : "出款金额(元)",
 										dataIndex : 'amt',
 										sortable : false,
 										flex : 1,
@@ -157,9 +169,8 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 										flex : 1,
 										sortable : false,
 										renderer : function(value) {
-											var text = ['文件生产失败', '初始状态',
-													'文件创建中', '文件已创建', '批次完成',
-													'部分成功'];
+											var text = ['失败', '处理中', '出款成功',
+													'失败已回退'];
 											return text[parseInt(value) + 1];
 										}
 									}]

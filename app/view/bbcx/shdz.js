@@ -95,6 +95,36 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 											width : 180
 										}]
 							}, {
+								xtype : 'fieldcontainer',
+								layout : 'hbox',
+								items : [{
+											xtype : 'combobox',
+											name : 'ctype',
+											width : 516,
+											queryMode : 'local',
+											anyMatch : true,
+											editable : false,
+											store : new Ext.data.Store({
+														fields : ['id', 'name'],
+														data : [{
+																	"id" : 1,
+																	"name" : "借记卡"
+																}, {
+																	"id" : 2,
+																	"name" : "信用卡"
+																}]
+													}),
+											valueField : 'id',
+											displayField : 'name',
+											margin : '0 10 0 0',
+											fieldLabel : '卡类型'
+										}, {
+											xtype : 'textfield',
+											name : 'cno',
+											width : 516,
+											fieldLabel : '帐号'
+										}]
+							}, {
 								xtype : 'button',
 								text : '查询',
 								margin : '0 20 0 0',
@@ -130,7 +160,7 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 								displayInfo : true
 							}],
 					columns : [{
-						text : "商户编号",
+						text : "商户号",
 						dataIndex : 'mid',
 						sortable : false,
 						locked : true,
@@ -146,6 +176,12 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						width : 220,
 						sortable : false
 					}, {
+						text : "终端号",
+						dataIndex : 'tid',
+						sortable : false,
+						locked : false,
+						width : 60
+					}, {
 						text : "清算日期",
 						dataIndex : 'sdate',
 						sortable : false,
@@ -153,25 +189,13 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						width : 150,
 						renderer : Ext.util.Format.dateRenderer('Y年m月d日')
 					}, {
-						text : "终端号",
-						dataIndex : 'tid',
-						sortable : false,
-						locked : false,
-						width : 60
-					}, {
-						text : "交易时间",
-						dataIndex : 'tdt',
-						sortable : false,
-						locked : false,
-						width : 150
-					}, {
-						text : "卡品牌",
+						text : "卡类型",
 						dataIndex : 'ctype',
 						width : 100,
 						sortable : false,
 						locked : false,
 						renderer : function(value) {
-							var text = ['借记卡', '信用卡'];
+							var text = ['借记卡', '信用卡', '信用卡'];
 							return text[parseInt(value) - 1];
 						},
 						width : 80
@@ -194,7 +218,13 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						locked : false,
 						width : 100
 					}, {
-						text : "交易金额",
+						text : "交易时间",
+						dataIndex : 'tdt',
+						sortable : false,
+						locked : false,
+						width : 150
+					}, {
+						text : "交易金额(元)",
 						dataIndex : 'tamt',
 						sortable : false,
 						locked : true,
@@ -223,7 +253,7 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 									parseInt(value) / 100, '0,0.00');
 						}
 					}, {
-						text : "商户手续费",
+						text : "商户手续费(元)",
 						dataIndex : 'mfee',
 						locked : true,
 						width : 120,
@@ -252,7 +282,7 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 									parseInt(value) / 100, '0,0.00');
 						}
 					}, {
-						text : "清算净额",
+						text : "清算净额(元)",
 						dataIndex : 'bj',
 						locked : true,
 						width : 120,
