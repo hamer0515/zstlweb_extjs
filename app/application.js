@@ -9,7 +9,7 @@ Ext.define('Zstlweb.Application', {
 			],
 
 			controllers : ['Login', 'Index', 'Component', 'Roles', 'Users',
-					'Routes', 'bbcx', 'jycx'
+					'Routes', 'bbcx', 'jycx', 'zhgl'
 			// TODO: add controllers here
 			],
 

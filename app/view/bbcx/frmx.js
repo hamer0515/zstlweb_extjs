@@ -12,7 +12,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 					fields : ['mid', 'sdate', 'tdt', 'ssn', 'tamt', 'pft',
 							'lfee', 'je', 'mname'],
 
-					pageSize : 50,
+					pageSize : 10,
 
 					proxy : {
 						type : 'ajax',

@@ -10,9 +10,10 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 	initComponent : function() {
 		var store = new Ext.data.Store({
 					fields : ['mid', 'mname', 'sdate', 'tid', 'tdt', 'ctype',
-							'ssn', 'cno', 'tcode', 'tamt', 'mfee', 'bj'],
+							'ssn', 'cno', 'tcode', 'tamt', 'mfee', 'bj',
+							'refnum'],
 
-					pageSize : 50,
+					pageSize : 10,
 					remoteSort : true,
 
 					proxy : {
@@ -92,7 +93,13 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 											xtype : 'datefield',
 											format : 'Y-m-d',
 											name : 'sdate_to',
+											margin : '0 10 0 0',
 											width : 180
+										}, {
+											xtype : 'textfield',
+											name : 'refnum',
+											width : 516,
+											fieldLabel : '检索参考号'
 										}]
 							}, {
 								xtype : 'fieldcontainer',
@@ -214,6 +221,12 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 					}, {
 						text : "交易流水号",
 						dataIndex : 'ssn',
+						sortable : false,
+						locked : false,
+						width : 100
+					}, {
+						text : "检索参考号",
+						dataIndex : 'refnum',
 						sortable : false,
 						locked : false,
 						width : 100

@@ -13,7 +13,7 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 									'ctype', 'tamt', 'mname', 'refnum', 'tsn',
 									'rev_flag'],
 
-							pageSize : 50,
+							pageSize : 10,
 							remoteSort : true,
 
 							proxy : {
@@ -115,7 +115,6 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 													name : 'refnum',
 													width : 516,
 													margin : '0 10 0 0',
-													vtype : 'id',
 													fieldLabel : '检索参考号'
 												}, {
 													xtype : 'textfield',
@@ -164,47 +163,53 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 										text : "商户名称",
 										dataIndex : 'mname',
 										sortable : false,
-										flex : 3
+										locked : true,
+										width : 200
 									}, {
 										text : "商户号",
 										dataIndex : 'mid',
 										sortable : false,
-										flex : 3
+										locked : false,
+										width : 150
 									}, {
 										text : "终端号",
 										dataIndex : 'tid',
 										sortable : false,
-										flex : 2
+										locked : true,
+										width : 100
 									}, {
 										text : "卡号",
 										dataIndex : 'cno',
-										flex : 4,
-										sortable : false
+										sortable : false,
+										locked : true,
+										width : 150
 									}, {
 										text : "卡类型",
 										dataIndex : 'ctype',
 										width : 100,
+										locked : true,
 										sortable : false,
-										locked : false,
 										renderer : function(value) {
 											var text = ['借记卡', '信用卡', '信用卡'];
 											return text[parseInt(value) - 1];
-										},
-										width : 80
+										}
 									}, {
 										text : "交易时间",
 										dataIndex : 'ptdt',
 										sortable : false,
-										flex : 4
+										locked : true,
+										width : 150
 									}, {
 										text : "交易类型",
 										dataIndex : 'tcode',
 										sortable : false,
-										flex : 2
+										locked : true,
+										width : 90
 									}, {
 										text : "交易金额",
 										dataIndex : 'tamt',
-										flex : 4,
+										locked : true,
+										width : 100,
 										sortable : false,
 										renderer : function(value) {
 											if (!value) {
@@ -218,16 +223,19 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 										text : "检索参考号",
 										dataIndex : 'refnum',
 										sortable : false,
-										flex : 4
+										locked : false,
+										width : 150
 									}, {
 										text : "终端流水号",
 										dataIndex : 'tsn',
 										sortable : false,
-										flex : 2
+										locked : false,
+										width : 150
 									}, {
 										text : "冲正标志",
 										dataIndex : 'rev_flag',
-										flex : 2,
+										locked : false,
+										width : 80,
 										sortable : false
 									}]
 						}];

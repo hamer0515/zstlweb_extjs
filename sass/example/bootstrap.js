@@ -67,10 +67,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Zstlweb.view.component.Status": [],
   "Ext.locale.zh_CN.picker.Month": [],
   "Ext.ux.PreviewPlugin": [],
+  "Zstlweb.view.zhgl.zhcx": [],
   "overrides.toolbar.Paging": [],
   "Zstlweb.view.user.List": [],
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [],
+  "Zstlweb.view.zhgl.zhlscx": [],
   "Ext.locale.zh_CN.form.field.HtmlEditor": [],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [],
@@ -107,6 +109,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Zstlweb.controller.Roles": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
+  "Zstlweb.controller.zhgl": [],
   "Ext.ux.GroupTabRenderer": [],
   "Zstlweb.view.login.LoginForm": [],
   "overrides.form.field.HtmlEditor": [],
@@ -220,6 +223,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.PreviewPlugin": [
     "plugin.preview"
   ],
+  "Zstlweb.view.zhgl.zhcx": [
+    "widget.zhglzhcx"
+  ],
   "overrides.toolbar.Paging": [],
   "Zstlweb.view.user.List": [
     "widget.userlist"
@@ -227,6 +233,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [
     "widget.eventrecordermanager"
+  ],
+  "Zstlweb.view.zhgl.zhlscx": [
+    "widget.zhglzhlscx"
   ],
   "Ext.locale.zh_CN.form.field.HtmlEditor": [],
   "Ext.ux.ProgressBarPager": [],
@@ -286,6 +295,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Zstlweb.controller.Roles": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
+  "Zstlweb.controller.zhgl": [],
   "Ext.ux.GroupTabRenderer": [
     "plugin.grouptabrenderer"
   ],

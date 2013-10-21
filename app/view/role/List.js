@@ -11,7 +11,7 @@ Ext.define('Zstlweb.view.role.List', {
 					fields : ['name', 'memo', 'role_id', 'rowid'],
 					autoLoad : true,
 
-					pageSize : 50,
+					pageSize : 10,
 					remoteSort : true,
 
 					proxy : {

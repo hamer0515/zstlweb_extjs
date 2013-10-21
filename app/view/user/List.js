@@ -10,7 +10,7 @@ Ext.define('Zstlweb.view.user.List', {
 							'user_id', 'utype', 'itype'],
 					autoLoad : true,
 
-					pageSize : 50,
+					pageSize : 10,
 					remoteSort : true,
 
 					proxy : {
@@ -123,13 +123,6 @@ Ext.define('Zstlweb.view.user.List', {
 									selector = Ext
 											.getCmp('itemselector-roles-edit');
 									view.down('form').loadRecord(record);
-									// Ext.getCmp('utype')
-									// .setValue(record.data.utype);
-									// if (parseInt(record.data.itype) == 0) {
-									// Ext.getCmp('itype').clearValue();
-									// }
-									// Ext.getCmp('itype')
-									// .setValue(record.data.itype);
 									Ext.Ajax.request({
 												url : 'base/roles',
 												async : false,
