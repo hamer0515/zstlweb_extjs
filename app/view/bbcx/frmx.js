@@ -10,9 +10,9 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 	initComponent : function() {
 		var store = new Ext.data.Store({
 					fields : ['mid', 'sdate', 'tdt', 'ssn', 'tamt', 'pft',
-							'lfee', 'je', 'mname'],
+							'lfee', 'je', 'mname', 'sum'],
 
-					pageSize : 10,
+					pageSize : 50,
 
 					proxy : {
 						type : 'ajax',
@@ -129,11 +129,13 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 					collapsible : false,
 					store : this.store,
 					dockedItems : [{
-								xtype : 'pagingtoolbar',
-								store : this.store,
-								dock : 'bottom',
-								displayInfo : true
-							}],
+						xtype : 'pagingtoolbar',
+						store : this.store,
+						dock : 'bottom',
+						pageSize : 50,
+						plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
+						displayInfo : true
+					}],
 					columns : [{
 						text : "商户号",
 						dataIndex : 'mid',
@@ -176,13 +178,10 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						locked : true,
 						width : 120,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('tamt'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].tamt;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {
@@ -205,13 +204,10 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						width : 120,
 						sortable : false,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('pft_chnl'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].pft;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {
@@ -234,13 +230,10 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						width : 150,
 						sortable : false,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('lfee_chnl'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].lfee;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {
@@ -263,13 +256,11 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 						width : 120,
 						sortable : false,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('je'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return parseInt(records[0].data.sum[0].pft)
+									- parseInt(records[0].data.sum[0].lfee);
 						},
 						summaryRenderer : function(value) {
 							if (!value) {

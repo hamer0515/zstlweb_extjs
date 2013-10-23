@@ -100,6 +100,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.LiveSearchGridPanel": [],
   "Ext.ux.grid.filter.DateFilter": [],
   "Ext.ux.TreePicker": [],
+  "Zstlweb.view.bbcx.bbxz": [],
   "overrides.Format": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "Ext.data.PagingMemoryProxy"
@@ -141,6 +142,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.ux.DataView.Animated": [],
   "Zstlweb.view.component.Routes": [],
+  "Zstlweb.view.component.plugins.PageComboResizer": [],
   "Zstlweb.view.login.PasswordReset": [],
   "Zstlweb.controller.Index": [],
   "Ext.ux.statusbar.StatusBar": [
@@ -284,6 +286,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.TreePicker": [
     "widget.treepicker"
   ],
+  "Zstlweb.view.bbcx.bbxz": [
+    "widget.bbcxbbxz"
+  ],
   "overrides.Format": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "proxy.pagingmemory"
@@ -357,6 +362,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Zstlweb.view.component.Routes": [
     "widget.routes"
   ],
+  "Zstlweb.view.component.plugins.PageComboResizer": [],
   "Zstlweb.view.login.PasswordReset": [
     "widget.passwordreset"
   ],

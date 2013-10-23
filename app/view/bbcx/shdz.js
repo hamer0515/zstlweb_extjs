@@ -11,9 +11,9 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 		var store = new Ext.data.Store({
 					fields : ['mid', 'mname', 'sdate', 'tid', 'tdt', 'ctype',
 							'ssn', 'cno', 'tcode', 'tamt', 'mfee', 'bj',
-							'refnum'],
+							'refnum', 'sum'],
 
-					pageSize : 10,
+					pageSize : 50,
 					remoteSort : true,
 
 					proxy : {
@@ -161,11 +161,13 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 					collapsible : false,
 					store : this.store,
 					dockedItems : [{
-								xtype : 'pagingtoolbar',
-								store : this.store,
-								dock : 'bottom',
-								displayInfo : true
-							}],
+						xtype : 'pagingtoolbar',
+						store : this.store,
+						dock : 'bottom',
+						pageSize : 50,
+						plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
+						displayInfo : true
+					}],
 					columns : [{
 						text : "商户号",
 						dataIndex : 'mid',
@@ -187,7 +189,7 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						dataIndex : 'tid',
 						sortable : false,
 						locked : false,
-						width : 60
+						width : 120
 					}, {
 						text : "清算日期",
 						dataIndex : 'sdate',
@@ -229,7 +231,7 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						dataIndex : 'refnum',
 						sortable : false,
 						locked : false,
-						width : 100
+						width : 130
 					}, {
 						text : "交易时间",
 						dataIndex : 'tdt',
@@ -243,13 +245,10 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						locked : true,
 						width : 120,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('tamt'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].tamt;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {
@@ -272,13 +271,10 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						width : 120,
 						sortable : false,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('mfee'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].mfee;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {
@@ -301,13 +297,10 @@ Ext.define('Zstlweb.view.bbcx.shdz', {
 						width : 120,
 						sortable : false,
 						summaryType : function(records) {
-							var i = 0, length = records.length, total = 0, record;
-
-							for (; i < length; ++i) {
-								record = records[i];
-								total += parseInt(record.get('bj'));
+							if (records.length == 0) {
+								return '';
 							}
-							return total;
+							return records[0].data.sum[0].bj;
 						},
 						summaryRenderer : function(value) {
 							if (!value) {

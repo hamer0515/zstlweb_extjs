@@ -41,10 +41,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Zstlweb.view.role.List": [],
   "Zstlweb.view.component.Status": [],
   "Ext.ux.PreviewPlugin": [],
+  "Zstlweb.view.zhgl.zhcx": [],
   "overrides.toolbar.Paging": [],
   "Zstlweb.view.user.List": [],
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [],
+  "Zstlweb.view.zhgl.zhlscx": [],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [],
   "Ext.ux.ajax.Simlet": [],
@@ -68,6 +70,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Zstlweb.view.South": [],
   "Ext.ux.grid.filter.DateFilter": [],
   "Ext.ux.TreePicker": [],
+  "Zstlweb.view.bbcx.bbxz": [],
   "overrides.Format": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "Ext.data.PagingMemoryProxy"
@@ -77,6 +80,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Zstlweb.view.user.Add": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
+  "Zstlweb.controller.zhgl": [],
   "Ext.ux.GroupTabRenderer": [],
   "Zstlweb.view.login.LoginForm": [],
   "overrides.form.field.HtmlEditor": [],
@@ -97,8 +101,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.GroupTabPanel": [],
   "Ext.ux.DataView.LabelEditor": [],
   "Ext.ux.grid.filter.StringFilter": [],
-  "Ext.ux.statusbar.ValidationStatus": [],
   "Zstlweb.view.user.Edit": [],
+  "Ext.ux.statusbar.ValidationStatus": [],
   "overrides.panel.Panel": [],
   "Ext.ux.layout.Center": [],
   "Zstlweb.view.component.picker.DateTimePicker": [
@@ -106,6 +110,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.ux.DataView.Animated": [],
   "Zstlweb.view.component.Routes": [],
+  "Zstlweb.view.component.plugins.PageComboResizer": [],
   "Zstlweb.view.login.PasswordReset": [],
   "Zstlweb.controller.Index": [],
   "Ext.ux.statusbar.StatusBar": [
@@ -176,6 +181,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.PreviewPlugin": [
     "plugin.preview"
   ],
+  "Zstlweb.view.zhgl.zhcx": [
+    "widget.zhglzhcx"
+  ],
   "overrides.toolbar.Paging": [],
   "Zstlweb.view.user.List": [
     "widget.userlist"
@@ -183,6 +191,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.event.RecorderManager": [
     "widget.eventrecordermanager"
+  ],
+  "Zstlweb.view.zhgl.zhlscx": [
+    "widget.zhglzhlscx"
   ],
   "Ext.ux.ProgressBarPager": [],
   "Ext.ux.CellDragDrop": [
@@ -227,6 +238,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.TreePicker": [
     "widget.treepicker"
   ],
+  "Zstlweb.view.bbcx.bbxz": [
+    "widget.bbcxbbxz"
+  ],
   "overrides.Format": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "proxy.pagingmemory"
@@ -238,6 +252,7 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.grid.filter.Filter": [],
+  "Zstlweb.controller.zhgl": [],
   "Ext.ux.GroupTabRenderer": [
     "plugin.grouptabrenderer"
   ],
@@ -282,10 +297,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.grid.filter.StringFilter": [
     "gridfilter.string"
   ],
-  "Ext.ux.statusbar.ValidationStatus": [],
   "Zstlweb.view.user.Edit": [
     "widget.useredit"
   ],
+  "Ext.ux.statusbar.ValidationStatus": [],
   "overrides.panel.Panel": [],
   "Ext.ux.layout.Center": [
     "layout.ux.center"
@@ -297,6 +312,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Zstlweb.view.component.Routes": [
     "widget.routes"
   ],
+  "Zstlweb.view.component.plugins.PageComboResizer": [],
   "Zstlweb.view.login.PasswordReset": [
     "widget.passwordreset"
   ],

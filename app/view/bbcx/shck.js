@@ -12,7 +12,7 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 					fields : ['mid', 'fbatch', 'amt', 'cdate', 'status',
 							'mname'],
 
-					pageSize : 10,
+					pageSize : 50,
 					remoteSort : true,
 
 					proxy : {
@@ -158,11 +158,13 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 					collapsible : false,
 					store : this.store,
 					dockedItems : [{
-								xtype : 'pagingtoolbar',
-								store : this.store,
-								dock : 'bottom',
-								displayInfo : true
-							}],
+						xtype : 'pagingtoolbar',
+						store : this.store,
+						dock : 'bottom',
+						pageSize : 50,
+						plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
+						displayInfo : true
+					}],
 					columns : [{
 								text : "商户号",
 								dataIndex : 'mid',

@@ -4,5 +4,6 @@ Ext.define('Zstlweb.controller.Component', {
 			views : ['Zstlweb.view.component.Status',
 					'Zstlweb.view.component.UTypes',
 					'Zstlweb.view.component.DateTime',
-					'Zstlweb.view.component.picker.DateTimePicker']
+					'Zstlweb.view.component.picker.DateTimePicker',
+					'Zstlweb.view.component.plugins.PageComboResizer']
 		});

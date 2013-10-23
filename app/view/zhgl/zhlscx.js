@@ -11,7 +11,6 @@ Ext.define('Zstlweb.view.zhgl.zhlscx', {
 				var store = new Ext.data.Store({
 							fields : ['in', 'out', 'balance', 'memo', 'ts_c'],
 							autoLoad : true,
-							pageSize : 10,
 
 							proxy : {
 								type : 'ajax',

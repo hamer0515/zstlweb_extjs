@@ -9,9 +9,9 @@ Ext.define('Zstlweb.view.zhgl.zhcx', {
 
 	initComponent : function() {
 		var store = new Ext.data.Store({
-					fields : ['mid', 'r_0', 'r_1', 'ts_u'],
+					fields : ['mid', 'mname', 'r_0', 'r_1', 'ts_u'],
 
-					pageSize : 10,
+					pageSize : 50,
 
 					proxy : {
 						type : 'ajax',
@@ -106,20 +106,27 @@ Ext.define('Zstlweb.view.zhgl.zhcx', {
 					collapsible : false,
 					store : this.store,
 					dockedItems : [{
-								xtype : 'pagingtoolbar',
-								store : this.store,
-								dock : 'bottom',
-								displayInfo : true
-							}],
+						xtype : 'pagingtoolbar',
+						store : this.store,
+						dock : 'bottom',
+						pageSize : 50,
+						plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
+						displayInfo : true
+					}],
 					columns : [{
-						text : "商户号",
-						dataIndex : 'mid',
+						text : "商户名称",
+						dataIndex : 'mname',
 						sortable : false,
-						flex : 3,
+						flex : 4,
 						summaryRenderer : function(value, summaryData,
 								dataIndex) {
 							return '小计：';
 						}
+					}, {
+						text : "商户号",
+						dataIndex : 'mid',
+						sortable : false,
+						flex : 3
 					}, {
 						text : "账户余额(元)",
 						dataIndex : 'r_0',
@@ -195,19 +202,19 @@ Ext.define('Zstlweb.view.zhgl.zhcx', {
 								var record = grid.getStore().getAt(rowIndex);
 
 								Ext.create('Ext.window.Window', {
-											title : '帐号' + record.data.mid
-													+ '操作历史',
-											height : 600,
-											width : 800,
-											modal : true,
-											resizable : false,
-											layout : 'fit',
-											items : {
-												xtype : 'zhglzhlscx',
-												border : false,
-												mid : record.data.mid
-											}
-										}).show();
+									title : '商户【' + record.data.mname + '】商户号【'
+											+ record.data.mid + '】账户操作历史',
+									height : 540,
+									width : 800,
+									modal : true,
+									resizable : false,
+									layout : 'fit',
+									items : {
+										xtype : 'zhglzhlscx',
+										border : false,
+										mid : record.data.mid
+									}
+								}).show();
 							}
 						}]
 					}]
