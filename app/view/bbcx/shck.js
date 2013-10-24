@@ -144,7 +144,7 @@ Ext.define('Zstlweb.view.bbcx.shck', {
 							}]
 				}, {
 					xtype : 'gridpanel',
-					height : 500,
+					height : 'auto',
 					viewConfig : {
 						getRowClass : function(record) {
 							var color;

@@ -55,7 +55,7 @@ Ext.define('Zstlweb.view.zhgl.zhlscx', {
 				this.items = [{
 					xtype : 'gridpanel',
 					id : 'zhglzhlscx-grid-id',
-					height : 500,
+					height : 'auto',
 					collapsible : false,
 					store : this.store,
 					columns : [{

@@ -2,7 +2,7 @@ Ext.define('Zstlweb.view.user.List', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.userlist',
 	disableSelection : true,
-	height : 540,
+	height : 'auto',
 
 	initComponent : function() {
 		var store = new Ext.data.Store({
@@ -10,7 +10,7 @@ Ext.define('Zstlweb.view.user.List', {
 							'user_id', 'utype', 'itype'],
 					autoLoad : true,
 
-					pageSize : 10,
+					pageSize : 50,
 					remoteSort : true,
 
 					proxy : {
@@ -72,6 +72,7 @@ Ext.define('Zstlweb.view.user.List', {
 					xtype : 'pagingtoolbar',
 					store : store,
 					dock : 'bottom',
+					plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
 					displayInfo : true
 				}];
 		this.columns = [{

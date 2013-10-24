@@ -115,7 +115,7 @@ Ext.define('Zstlweb.view.bbcx.frmx', {
 							}]
 				}, {
 					xtype : 'gridpanel',
-					height : 500,
+					height : 'auto',
 					features : [{
 								id : 'group',
 								ftype : 'groupingsummary',

@@ -4,14 +4,14 @@ Ext.define('Zstlweb.view.role.List', {
 	disableSelection : true,
 	columnLines : true,
 	loadMask : true,
-	height : 540,
+	height : 'auto',
 
 	initComponent : function() {
 		var store = new Ext.data.Store({
 					fields : ['name', 'memo', 'role_id', 'rowid'],
 					autoLoad : true,
 
-					pageSize : 10,
+					pageSize : 50,
 					remoteSort : true,
 
 					proxy : {
@@ -71,6 +71,7 @@ Ext.define('Zstlweb.view.role.List', {
 					xtype : 'pagingtoolbar',
 					store : store,
 					dock : 'bottom',
+					plugins : [new Zstlweb.view.component.plugins.PageComboResizer()],
 					displayInfo : true
 				}];
 		this.columns = [{

@@ -92,7 +92,7 @@ Ext.define('Zstlweb.view.zhgl.zhcx', {
 							}]
 				}, {
 					xtype : 'gridpanel',
-					height : 500,
+					height : 'auto',
 					features : [{
 								id : 'group',
 								ftype : 'groupingsummary',

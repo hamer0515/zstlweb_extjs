@@ -147,7 +147,7 @@ Ext.define('Zstlweb.view.jycx.ssjycx', {
 							return color;
 						}
 					},
-					height : 500,
+					height : 'auto',
 					collapsible : false,
 					store : this.store,
 					dockedItems : [{
